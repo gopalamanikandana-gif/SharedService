@@ -1,0 +1,12 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Student Management</title>
+<style>
+*{box-sizing:border-box}body{font-family:Arial,sans-serif;background:#f4f4fb;margin:0;color:#24213b}.wrap{max-width:760px;margin:38px auto;padding:20px}.card{background:#fff;border-radius:16px;padding:26px;margin:16px 0;box-shadow:0 8px 28px #10204012}h1{margin-top:0}.tag{background:#dff8e8;color:#17663a;border-radius:20px;padding:7px 11px;font-size:13px}label{display:block;margin:15px 0 6px}input{width:100%;padding:12px;border:1px solid #d1d0e2;border-radius:8px}button{margin-top:18px;background:#5c43b7;color:white;border:0;padding:12px 18px;border-radius:8px;cursor:pointer}pre{white-space:pre-wrap;background:#f6f4fc;padding:16px;border-radius:10px}.error{color:#b42318}.muted{color:#5f5b78}a{color:#5c43b7}
+</style></head><body><div class="wrap">
+<h1>Student Management System</h1><p class="muted">Client Application B · Uses the same shared notification API</p>
+<div class="card"><span class="tag">{{ service_status }}</span><h2>Send student update</h2>
+<form method="post" action="/notify"><label>Student name</label><input name="recipient" placeholder="e.g. Priya" required>
+<label>Update details</label><input name="update_type" placeholder="e.g. Exam timetable updated" required><button type="submit">Submit update & notify</button></form>
+{% if result %}<h3>Notification returned by shared service</h3><pre>{{ result }}</pre>{% endif %}
+{% if error %}<p class="error">{{ error }}</p>{% endif %}
+</div><div class="card"><h3>How this app uses SOA</h3><p>This application sends student update details to the same shared service on port 5000. The central service controls the common message format.</p><p><a href="http://127.0.0.1:5000">Open shared service dashboard</a> · <a href="http://127.0.0.1:5001">Open Smart Campus Canteen</a></p></div>
+</div></body></html>
